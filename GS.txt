@@ -1,0 +1,53 @@
+GETTING STARTED
+
+PRESENTATION URL : http://travistidwell.com/presentations/meanapp/#/
+
+1. Install necessary dependencies / tools to be used for development using MEAN Stack
+	-> Install Homebrew (Mac OSX) (Optional) : ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	-> Install Node : $ brew install node
+	-> Install MongoDB : $ brew install mongodb
+	-> Install Grunt CLI : $ npm install -g grunt-cli
+	-> Install Bower : $ npm install -g bower
+	-> Install Compass : $ gem install compass
+	-> Initiate/Run MongoDB : $mongod
+
+2. Building The Server ["API FIRST"]
+
+	2.1 SETUP NODEJS PROJECT
+		-> Initialize the app
+			-> $ mkdir server
+			-> $ cd server
+			-> $ npm init
+		-> Proceed with the question regarding with the app name, version, description, entry point(default to index.js) and etc.
+		-> Install Node.JS Modules
+			-> $ npm install --save express
+			-> $ npm install --save mongoose
+			-> $ npm install --save resourcejs
+			-> $ npm install --save method-override
+			-> $ npm install --save body-parser
+			-> $ npm install --save lodash
+		-> See the entire repository for code reference
+		-> Running the app : $ node index.js
+
+3. Building The Front-End 
+	
+	3.1 BOOTSTRAPPING THE CLIENT WITH YEOMAN (http://yeoman.io/)
+		-> Initialize Front End Modules and Structure
+			-> $ mkdir client
+			-> $ cd client
+			-> $ npm install -g yo
+			-> $ npm install -g generator-angular
+			-> $ yo angular
+		-> Just pick modules that is necessary for the application, in this instance we only pick the angular-route.js
+		-> Generate the Movies Route
+			-> $ yo angular:route movies
+		-> Add Restangular module to the project
+			-> $ bower install --save restangular
+			-> Include restangular to the project index
+				-> <script src="bower_components/restangular/dist/restangular.js"></script>
+		-> Add CRUD Capabilities
+			-> $ yo angular:route movie-add --uri=create/movie
+			-> $ yo angular:route movie-view --uri=movie/:id
+			-> $ yo angular:route movie-delete --uri=movie/:id/delete
+			-> $ yo angular:route movie-edit --uri=movie/:id/edit
+			-> NOTE : Under --URI=(URL) it depends on the API route URL's that we're used from the backend/server side
